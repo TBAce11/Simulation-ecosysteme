@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b6fb68aa-024b-4771-b83a-b46309e3b1b4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projet1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation-ecosysteme.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ConditionsInitiales.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ConditionsInitialesInvalides.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Lac.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Plante.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Simulation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/UsinePlante.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet1/ConditionsInitiales.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet1/ConditionsInitialesInvalides.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet1/Lac.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet1/Plante.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet1/Simulation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet1/UsinePlante.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet1/plantes.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lac.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lac.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Plante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Plante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantes.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1pDjtRPyZdQrr4l4gdENa37TP8g" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Simulation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Simulation" />
+      <module name="Simulation-ecosysteme" />
+      <option name="REDIRECT_INPUT" value="true" />
+      <option name="INPUT_FILE" value="$PROJECT_DIR$/exemples/plantes.xml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Simulation" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b6fb68aa-024b-4771-b83a-b46309e3b1b4" name="Default Changelist" comment="" />
+      <created>1614724768711</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614724768711</updated>
+    </task>
+    <servers />
+  </component>
+</project>

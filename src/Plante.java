@@ -71,14 +71,14 @@ public class Plante {
         }
     }
 
-    public double reproduction(UsinePlante usineDuLac, List<Plante> plantes, int i, double energieSupplementaire) {
-        if (Math.random() <= plantes.get(i).getFertilite()) { //cas où l'enfant plante sera créé
-            if (energieSupplementaire >= plantes.get(i).getEnergieEnfant()) { //faut-il seulement faire affaire aux variables this. puisque reproduction est appelée à partir de la plante concernée?
+    public double reproduction(UsinePlante usineDuLac, List<Plante> plantes, double energieSupplementaire) {
+        if (Math.random() <= this.fertilite) { //cas où l'enfant plante sera créé
+            if (energieSupplementaire >= this.energieEnfant) {
                 plantes.add(usineDuLac.creerPlante());
-                energieSupplementaire -= plantes.get(i).getEnergieEnfant();
+                energieSupplementaire -= this.energieEnfant;
             } else {
                 plantes.add(usineDuLac.creerPlante());
-                plantes.get(i).retraitEnergie(energieSupplementaire);
+                retraitEnergie(energieSupplementaire);
                 energieSupplementaire = 0;
             }
         } else { //tentative de reproduction échouée

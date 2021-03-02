@@ -28,14 +28,14 @@ public final class Lac {
                     plantes.remove(i);
                 }
             }
-            // Si energie supplementaire -> que se passe-t-il quand
+            // Si energie supplementaire
             if (plantes.get(i).getBesoinEnergie() < energieAbsorbeePlante) {
                 double energieSupplementaire = energieSupplementaire(energieAbsorbeePlante, plantes.get(i).getBesoinEnergie());
 
                 if (plantes.get(i).getAge() >= plantes.get(i).getAgeFertilite()) { //condition placée trop tôt ou non?
                     while (energieSupplementaire > 0) {
                         //reproduction retourne énergie supplémentaire tout en effectuant les opérations nécessaires
-                        energieSupplementaire = plantes.get(i).reproduction(usineDuLac, this.plantes, i, energieSupplementaire);
+                        energieSupplementaire = plantes.get(i).reproduction(usineDuLac, this.plantes, energieSupplementaire);
                     }
                 }
             }
