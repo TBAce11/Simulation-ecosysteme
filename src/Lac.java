@@ -11,34 +11,32 @@ public final class Lac {
     public Lac(int energieSolaire, List<Plante> plantes) {
         this.energieSolaire = energieSolaire;
         this.plantes = plantes;
-        System.out.println(this.plantes);
     }
 
     /**
      * Avance la simulation d'un cycle.
      */
     public void tick() {
-        // À compléter.
         double energieDesPlantes = energieTotale(this.plantes);
         for (int i = 0; i < plantes.size(); i++) {
+            System.out.println("Espèce: " + plantes.get(i).getNomEspece() + ", plante #" + (i + 1));
             double energieAbsorbeePlante = energieAbsorbee(energieDesPlantes, energieSolaire, plantes.get(i).getEnergie());
+
             // Si energie manquante
             if (plantes.get(i).getBesoinEnergie() > energieAbsorbeePlante) {
                 if (!(plantes.get(i).survie(energieAbsorbeePlante))) {
                     plantes.remove(i);
+                    //i--;
+                    System.out.println("Plante morte");
                 }
             }
             // Si energie supplementaire
-            if (plantes.get(i).getBesoinEnergie() < energieAbsorbeePlante) {
-                double energieSupplementaire = energieSupplementaire(energieAbsorbeePlante, plantes.get(i).getBesoinEnergie());
-
-                if (plantes.get(i).getAge() >= plantes.get(i).getAgeFertilite()) { //condition placée trop tôt ou non?
-                    while (energieSupplementaire > 0) {
-                        //reproduction retourne énergie supplémentaire tout en effectuant les opérations nécessaires
-                        energieSupplementaire = plantes.get(i).reproduction(usineDuLac, this.plantes, energieSupplementaire);
-                    }
-                }
+            else if (plantes.get(i).getBesoinEnergie() <= energieAbsorbeePlante) {
+                int energieSupplementaire = energieSupplementaire(energieAbsorbeePlante, plantes.get(i).getEnergieEnfant(), plantes.get(i).getBesoinEnergie());
+                System.out.println("Supp calculé: " + energieSupplementaire);
+                plantes.get(i).confirmationReproduction(usineDuLac, plantes, energieSupplementaire);
             }
+            System.out.println();
         }
     }
 
@@ -53,8 +51,8 @@ public final class Lac {
         return energieSoleil*energiePlante/energieTotale;
     }
 
-    public double energieSupplementaire(double energieAbsorbeePlante, double besoinEnergie){
-        return (energieAbsorbeePlante - besoinEnergie);
+    public int energieSupplementaire(double energieAbsorbeePlante, double energieActuelle, double besoinEnergie){
+        return (int) ((energieActuelle+ energieAbsorbeePlante) - besoinEnergie);
     }
 
     public void imprimeRapport(PrintStream out) {

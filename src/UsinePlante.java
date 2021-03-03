@@ -17,11 +17,10 @@ public class UsinePlante {
         traceInitialisation.put("resilience", false);
         traceInitialisation.put("fertilite", false);
         traceInitialisation.put("ageFertilite", false);
-        traceInitialisation.put("energieEnfant", true); //remettre à false
+        traceInitialisation.put("energieEnfant", false);
     }
 
     public Plante creerPlante() {
-        System.out.println(traceInitialisation);
         Plante nouvellePlante = new Plante(this.nomEspece, this.energieEnfant, 0, this.besoinEnergie,
                 this.efficaciteEnergie, this.resilience, this.fertilite, this.ageFertilite, this.energieEnfant); //energieEnfant en doublon
 
@@ -30,7 +29,7 @@ public class UsinePlante {
                 (!(traceInitialisation.get("efficaciteEnergie"))) || (!(traceInitialisation.get("resilience"))) ||
                 (!(traceInitialisation.get("fertilite"))) || (!(traceInitialisation.get("ageFertilite"))) ||
                 (!(traceInitialisation.get("energieEnfant")))) {
-            return null; //-> lancement d'une exception de ConditionsInitiales/ break ou return dans la méthode?
+            return null; //-> lancement d'une exception de ConditionsInitiales?
         }
         return nouvellePlante;
     }
@@ -76,7 +75,7 @@ public class UsinePlante {
     }
 
     public void setAgeFertilite(int ageFertilite) {
-        if (this.ageFertilite >= 0) {
+        if (ageFertilite >= 0) {
             this.ageFertilite = ageFertilite;
 
             traceInitialisation.replace("ageFertilite", true);
@@ -84,12 +83,11 @@ public class UsinePlante {
     }
 
     public void setEnergieEnfant(double energieEnfant) {
-        if (this.energieEnfant > 0) {
+        if (energieEnfant > 0) {
             this.energieEnfant = energieEnfant;
 
             traceInitialisation.replace("energieEnfant", true);
         }
-
     }
 }
 

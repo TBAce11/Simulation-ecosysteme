@@ -2,41 +2,73 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6fb68aa-024b-4771-b83a-b46309e3b1b4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projet1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation-ecosysteme.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/ConditionsInitiales.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/ConditionsInitialesInvalides.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/Lac.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/Plante.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/Simulation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/UsinePlante.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet1/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet1/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet1/ConditionsInitiales.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet1/ConditionsInitialesInvalides.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet1/Lac.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet1/Plante.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet1/Simulation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet1/UsinePlante.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet1/plantes.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/misc.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Herbivore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simulation-ecosysteme/Lac.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simulation-ecosysteme/Lac.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simulation-ecosysteme/Plante.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simulation-ecosysteme/Plante.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simulation-ecosysteme/UsinePlante.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simulation-ecosysteme/UsinePlante.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lac.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lac.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Plante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Plante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantes.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UsinePlante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UsinePlante.java" afterDir="false" />
+    </list>
+    <list id="c19938a1-cf1c-4644-af28-f275e2f10b59" name="Changes by anita" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Lac.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lac.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Plante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Plante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UsinePlante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UsinePlante.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Lac.java">
+      <ranges>
+        <range start1="13" end1="14" start2="13" end2="13" changelist="b6fb68aa-024b-4771-b83a-b46309e3b1b4" />
+        <range start1="20" end1="21" start2="19" end2="19" changelist="b6fb68aa-024b-4771-b83a-b46309e3b1b4" />
+        <range start1="23" end1="23" start2="21" end2="22" changelist="b6fb68aa-024b-4771-b83a-b46309e3b1b4" />
+        <range start1="24" end1="24" start2="23" end2="24" changelist="c19938a1-cf1c-4644-af28-f275e2f10b59" />
+        <range start1="28" end1="28" start2="28" end2="30" changelist="c19938a1-cf1c-4644-af28-f275e2f10b59" />
+        <range start1="31" end1="40" start2="33" end2="37" changelist="b6fb68aa-024b-4771-b83a-b46309e3b1b4" />
+        <range start1="41" end1="41" start2="38" end2="39" changelist="b6fb68aa-024b-4771-b83a-b46309e3b1b4" />
+        <range start1="55" end1="57" start2="53" end2="55" changelist="b6fb68aa-024b-4771-b83a-b46309e3b1b4" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/UsinePlante.java">
+      <ranges>
+        <range start1="19" end1="20" start2="19" end2="20" changelist="b6fb68aa-024b-4771-b83a-b46309e3b1b4" />
+        <range start1="23" end1="24" start2="23" end2="23" changelist="c19938a1-cf1c-4644-af28-f275e2f10b59" />
+        <range start1="32" end1="33" start2="31" end2="32" changelist="b6fb68aa-024b-4771-b83a-b46309e3b1b4" />
+        <range start1="78" end1="79" start2="77" end2="78" changelist="c19938a1-cf1c-4644-af28-f275e2f10b59" />
+        <range start1="86" end1="87" start2="85" end2="86" changelist="c19938a1-cf1c-4644-af28-f275e2f10b59" />
+        <range start1="91" end1="92" start2="90" end2="90" changelist="b6fb68aa-024b-4771-b83a-b46309e3b1b4" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/Plante.java">
+      <ranges>
+        <range start1="2" end1="3" start2="2" end2="3" changelist="c19938a1-cf1c-4644-af28-f275e2f10b59" />
+        <range start1="26" end1="62" start2="26" end2="27" changelist="c19938a1-cf1c-4644-af28-f275e2f10b59" />
+        <range start1="63" end1="64" start2="28" end2="29" changelist="c19938a1-cf1c-4644-af28-f275e2f10b59" />
+        <range start1="65" end1="65" start2="30" end2="31" changelist="c19938a1-cf1c-4644-af28-f275e2f10b59" />
+        <range start1="67" end1="67" start2="33" end2="35" changelist="c19938a1-cf1c-4644-af28-f275e2f10b59" />
+        <range start1="73" end1="85" start2="41" end2="82" changelist="b6fb68aa-024b-4771-b83a-b46309e3b1b4" />
+        <range start1="86" end1="87" start2="83" end2="91" changelist="b6fb68aa-024b-4771-b83a-b46309e3b1b4" />
+        <range start1="89" end1="89" start2="93" end2="94" changelist="b6fb68aa-024b-4771-b83a-b46309e3b1b4" />
+        <range start1="90" end1="91" start2="95" end2="98" changelist="b6fb68aa-024b-4771-b83a-b46309e3b1b4" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="1pDjtRPyZdQrr4l4gdENa37TP8g" />
   <component name="ProjectViewState">
@@ -50,6 +82,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="Simulation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -77,5 +110,16 @@
       <updated>1614724768711</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

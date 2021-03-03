@@ -15,3 +15,17 @@ vous choisie et pourquoi?
     le Hashmap sera utile comme condition de base imposée lors de la création de plantes tant que toutes ses valeurs
     sont vraies.
 
+
+2. Expliquer dans votre README.txt comment les responsabilités entre les classes Lac et Plante ont été divisées et
+pourquoi. Quels changements avez-vous vû faire?
+
+De prime abord, les opérations liées aux instances de Plante ont été effectuées au sein de cette classe afin de
+faciliter la lecture et réduire drastiquement la quantité du code qui serait franchement douloureux à suivre en
+éxagérant l'utilisation de la liste "plantes" afin d'accéder aux valeurs de l'instance à la position i de l'Arraylist.
+La séparation du code a donc été effectuée dès que les opérations du simulateur faisaient appel aux attributs de
+l'instance de Plante manipulée, tri crucial lorsque ceux-ci subissait une modification sans paramètre donné puisque
+accomplir ceci au sein de Lac impliquerait l'utilisation illégale de setters. Les changements apportés aux codes
+ont simplement consisté en un passage en paramètre d'objets tels que l'usine du lac et l'Arraylist plantes de plus que
+des variables locales nécessaire aux calculs de probabilité d'un scénario et de fluctuations d'énergie.
+
+
