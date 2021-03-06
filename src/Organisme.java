@@ -1,61 +1,90 @@
+import java.lang.reflect.Array;
 import java.util.List;
 
 public abstract class Organisme {
-    private String nomEspece;
-    private double energie;
-    private int age;
-    private double besoinEnergie;
-    private double efficaciteEnergie;
-    private double resilience;
-    private double fertilite;
-    private int ageFertilite;
-    private double energieEnfant;
+    protected String nomEspece;
+    protected double energie;
+    protected int age;
+    protected double besoinEnergie;
+    protected double efficaciteEnergie;
+    protected double resilience;
+    protected double fertilite;
+    protected int ageFertilite;
+    protected double energieEnfant;
 
-    public String getNomEspece() {
+    public Organisme(String nomEspece, double energie, int age, double besoinEnergie, double efficaciteEnergie, double
+            resilience, double fertilite, int ageFertilite, double energieEnfant){
+        this.nomEspece = nomEspece;
+        this.energie = energie;
+        this.age = age;
+        this.besoinEnergie = besoinEnergie;
+        this.efficaciteEnergie = efficaciteEnergie;
+        this.resilience = resilience;
+        this.fertilite = fertilite;
+        this.ageFertilite = ageFertilite;
+        this.energieEnfant = energieEnfant;
+    }
+
+    final public String getNomEspece() {
         return this.nomEspece;
     }
 
-    public double getEnergie() {
+    final public double getEnergie() {
         return this.energie;
     }
 
-    public int getAge() {
+    final public int getAge() {
         return this.age;
     }
 
-    public double getBesoinEnergie() {
+    final public double getBesoinEnergie() {
         return this.besoinEnergie;
     }
 
-    public double getEfficaciteEnergie() {
+    final public double getEfficaciteEnergie() {
         return this.efficaciteEnergie;
     }
 
-    public double getResilience() {
+    final public double getResilience() {
         return this.resilience;
     }
 
-    public double getFertilite() {
+    final public double getFertilite() {
         return this.fertilite;
     }
 
-    public int getAgeFertilite() {
+    final public int getAgeFertilite() {
         return this.ageFertilite;
     }
 
-    public double getEnergieEnfant() {
+    final public double getEnergieEnfant() {
         return this.energieEnfant;
     }
 
-    public void viellir(){
+    final public void viellir(){
         this.age++;
     }
 
-    public abstract boolean survie(double energieAbsorbee);
+    public boolean survie(double energieAbsorbee){
+        int uniteEnergieManquante = (int) (this.besoinEnergie - energieAbsorbee);
+        double chanceSurvie = Math.pow(this.resilience, uniteEnergieManquante);
 
-    public abstract void confirmationReproduction(UsinePlante usineDuLac, List<Plante> plantes, int energieSupplementaire);
+        if (Math.random() <= chanceSurvie){
+            this.energie -= (this.besoinEnergie - energieAbsorbee);
+            this.viellir();
 
-    public abstract void recyclageEnergie(int energieSupplementaire);
+            if (this.energie <= 0){
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-    public abstract void retraitEnergie(double energieSupplementaire);
+    public abstract void confirmationReproduction(Usine usineDuLac, List<? extends Organisme> liste, int energieSupplementaire);
+
+    protected abstract void recyclageEnergie(int energieSupplementaire);
+
+    protected abstract void retraitEnergie(double energieSupplementaire);
 }

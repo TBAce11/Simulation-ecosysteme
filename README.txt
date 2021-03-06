@@ -28,4 +28,9 @@ accomplir ceci au sein de Lac impliquerait l'utilisation illégale de setters. L
 ont simplement consisté en un passage en paramètre d'objets tels que l'usine du lac et l'Arraylist plantes de plus que
 des variables locales nécessaire aux calculs de probabilité d'un scénario et de fluctuations d'énergie.
 
+3. Créer une classe ou une interface nommée Organisme. Modifier nos deux classes pour hériter de la classe Organisme ou
+d'implanter l'interface Organisme selon ce que vous avez choisi. Expliquez votre choix dans le fichier README.txt.
+
+
+
 
