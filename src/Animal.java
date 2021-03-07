@@ -2,9 +2,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public abstract class Animal extends Organisme{
-    private int tailleMaximum;
-    private double debrouillardise;
-    private Set<String> aliments = new HashSet<String>();
+    protected int tailleMaximum;
+    protected double debrouillardise;
+    protected Set<String> aliments = new HashSet<String>();
 
     public Animal(String nomEspece, double energie, int age, double besoinEnergie, double efficaciteEnergie, double
             resilience, double fertilite, int ageFertilite, double energieEnfant, int tailleMaximum, double debrouillardise, Set <String> aliments){
@@ -13,5 +13,17 @@ public abstract class Animal extends Organisme{
         this.debrouillardise = debrouillardise;
         this.aliments = aliments;
     }
+    protected double getDebrouillardise() {
+        return this.debrouillardise;
+    }
+
+    protected Set<String> getAliments() {
+        return this.aliments;
+    }
+
+    protected int getTailleMaximum(){
+        return this.tailleMaximum;
+    }
+
 
 }

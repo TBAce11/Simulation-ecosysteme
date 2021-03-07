@@ -2,29 +2,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Carnivore extends Organisme {
-    private int tailleMaximum;
-    private double debrouillardise;
-    private Set<String> aliments = new HashSet<String>();
+public class Carnivore extends Animal {
 
     public Carnivore(String nomEspece, double energie, int age, double besoinEnergie, double efficaciteEnergie, double
             resilience, double fertilite, int ageFertilite, double energieEnfant, int tailleMaximum, double debrouillardise, Set <String> aliments) {
-        super(nomEspece, energie, age, besoinEnergie, efficaciteEnergie, resilience, fertilite, ageFertilite, energieEnfant);
-        this.tailleMaximum = tailleMaximum;
-        this.debrouillardise = debrouillardise;
-        this.aliments = aliments;
-    }
-
-    protected double getDebrouillardise() {
-        return this.debrouillardise;
-    }
-
-    protected Set<String> getAliments() {
-        return this.aliments;
-    }
-
-    protected int getTailleMaximum(){
-        return this.tailleMaximum;
+        super(nomEspece, energie, age, besoinEnergie, efficaciteEnergie, resilience, fertilite, ageFertilite, energieEnfant, tailleMaximum,
+        debrouillardise, aliments);
     }
 
     protected void confirmationReproduction(Usine usine, List<? extends Organisme> carnivores, int energieSupplementaire) {

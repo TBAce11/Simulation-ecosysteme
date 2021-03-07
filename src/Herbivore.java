@@ -2,35 +2,18 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Herbivore extends Organisme{
-    private double debrouillardise;
+public class Herbivore extends Animal{
     private double voraciteMin;
     private double voraciteMax;
-    private Set<String> aliments = new HashSet<String>();
-    private int tailleMaximum;
 
 
     public Herbivore(String nomEspece, double energie, int age, double besoinEnergie, double efficaciteEnergie, double
             resilience, double fertilite, int ageFertilite, double energieEnfant, int tailleMaximum, double debrouillardise, double voraciteMin, double voraciteMax, Set <String> aliments) {
-        super(nomEspece, energie, age, besoinEnergie, efficaciteEnergie, resilience, fertilite, ageFertilite, energieEnfant);
-        this.tailleMaximum = tailleMaximum;
-        this.debrouillardise = debrouillardise;
+        super(nomEspece, energie, age, besoinEnergie, efficaciteEnergie, resilience, fertilite, ageFertilite, energieEnfant, tailleMaximum, debrouillardise, aliments);
         this.voraciteMin = voraciteMin;
         this.voraciteMax = voraciteMax;
-        this.aliments = aliments;
     }
 
-    protected double getDebrouillardise(){ return this.debrouillardise; }
-
-    protected double getVoraciteMin(){ return this.voraciteMin; }
-
-    protected double getVoraciteMax(){ return this.voraciteMax; }
-
-    protected Set<String> getAliments(){ return this.aliments;}
-
-    protected int getTailleMaximum(){
-        return this.tailleMaximum;
-    }
 
     protected void confirmationReproduction(Usine usine, List<? extends Organisme> herbivores, int energieSupplementaire) {
         UsineHerbivore usineHerbivoreDuLac = (UsineHerbivore) usine;
