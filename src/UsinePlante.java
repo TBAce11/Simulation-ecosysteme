@@ -5,7 +5,7 @@ public class UsinePlante extends Usine {
         super();
     }
 
-    public Plante creerPlante() {
+    protected Plante creerPlante() {
         Plante nouvellePlante = new Plante(this.nomEspece, this.energieEnfant, 0, this.besoinEnergie,
                 this.efficaciteEnergie, this.resilience, this.fertilite, this.ageFertilite, this.energieEnfant); //energieEnfant en doublon
 

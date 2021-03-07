@@ -20,7 +20,7 @@ public abstract class Usine {
         traceInitialisation.put("energieEnfant", false);
     }
 
-    public void setNomEspece(String nom) {
+    protected void setNomEspece(String nom) {
         if (nom != null) {
             this.nomEspece = nom;
 
@@ -28,7 +28,7 @@ public abstract class Usine {
         }
     }
 
-    public void setBesoinEnergie(double besoinEnergie) {
+    protected void setBesoinEnergie(double besoinEnergie) {
         if (besoinEnergie > 0) {
             this.besoinEnergie = besoinEnergie;
 
@@ -36,7 +36,7 @@ public abstract class Usine {
         }
     }
 
-    public void setEfficaciteEnergie(double efficaciteEnergie) {
+    protected void setEfficaciteEnergie(double efficaciteEnergie) {
         if ((efficaciteEnergie >= 0) && (efficaciteEnergie <= 1)) {
             this.efficaciteEnergie = efficaciteEnergie;
 
@@ -44,7 +44,7 @@ public abstract class Usine {
         }
     }
 
-    public void setResilience(double resilience) {
+    protected void setResilience(double resilience) {
         if ((resilience >= 0) && (resilience <= 1)) {
             this.resilience = resilience;
 
@@ -52,7 +52,7 @@ public abstract class Usine {
         }
     }
 
-    public void setFertilite(double fertilite) {
+    protected void setFertilite(double fertilite) {
         if ((fertilite >= 0) && (fertilite <= 1)) {
             this.fertilite = fertilite;
 
@@ -60,7 +60,7 @@ public abstract class Usine {
         }
     }
 
-    public void setAgeFertilite(int ageFertilite) {
+    protected void setAgeFertilite(int ageFertilite) {
         if (ageFertilite >= 0) {
             this.ageFertilite = ageFertilite;
 
@@ -68,7 +68,7 @@ public abstract class Usine {
         }
     }
 
-    public void setEnergieEnfant(double energieEnfant) {
+    protected void setEnergieEnfant(double energieEnfant) {
         if (energieEnfant > 0) {
             this.energieEnfant = energieEnfant;
 

@@ -25,47 +25,47 @@ public abstract class Organisme {
         this.energieEnfant = energieEnfant;
     }
 
-    final public String getNomEspece() {
+    final protected String getNomEspece() {
         return this.nomEspece;
     }
 
-    final public double getEnergie() {
+    final protected double getEnergie() {
         return this.energie;
     }
 
-    final public int getAge() {
+    final protected int getAge() {
         return this.age;
     }
 
-    final public double getBesoinEnergie() {
+    final protected double getBesoinEnergie() {
         return this.besoinEnergie;
     }
 
-    final public double getEfficaciteEnergie() {
+    final protected double getEfficaciteEnergie() {
         return this.efficaciteEnergie;
     }
 
-    final public double getResilience() {
+    final protected double getResilience() {
         return this.resilience;
     }
 
-    final public double getFertilite() {
+    final protected double getFertilite() {
         return this.fertilite;
     }
 
-    final public int getAgeFertilite() {
+    final protected int getAgeFertilite() {
         return this.ageFertilite;
     }
 
-    final public double getEnergieEnfant() {
+    final protected double getEnergieEnfant() {
         return this.energieEnfant;
     }
 
-    final public void viellir(){
+    final protected void viellir(){
         this.age++;
     }
 
-    public boolean survie(double energieAbsorbee){
+    protected boolean survie(double energieAbsorbee){
         int uniteEnergieManquante = (int) (this.besoinEnergie - energieAbsorbee);
         double chanceSurvie = Math.pow(this.resilience, uniteEnergieManquante);
 
@@ -82,9 +82,13 @@ public abstract class Organisme {
         }
     }
 
-    public abstract void confirmationReproduction(Usine usineDuLac, List<? extends Organisme> liste, int energieSupplementaire);
+    protected abstract void confirmationReproduction(Usine usineDuLac, List<? extends Organisme> liste, int energieSupplementaire);
 
-    protected abstract void recyclageEnergie(int energieSupplementaire);
+    final protected void recyclageEnergie(int energieSupplementaire){ //-> voir si elle peut être implémentée dans Organisme
+        this.energie += energieSupplementaire * this.efficaciteEnergie;
+    }
 
-    protected abstract void retraitEnergie(double energieSupplementaire);
+    final protected void retraitEnergie(double energieSupplementaire){
+        this.energie -= this.energieEnfant - energieSupplementaire;
+    }
 }

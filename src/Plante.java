@@ -7,7 +7,7 @@ public class Plante extends Organisme {
         super(nomEspece, energie, age, besoinEnergie, efficaciteEnergie, resilience, fertilite, ageFertilite, energieEnfant);
     }
 
-    public void confirmationReproduction(Usine usine, List<? extends Organisme> plantes, int energieSupplementaire) {
+    protected void confirmationReproduction(Usine usine, List<? extends Organisme> plantes, int energieSupplementaire) {
         UsinePlante usinePlanteDuLac = (UsinePlante) usine;
         if (this.age >= this.ageFertilite) { //plante assez mature pour concevoir un enfant
             usinePlanteDuLac.setNomEspece(this.nomEspece);
@@ -49,20 +49,9 @@ public class Plante extends Organisme {
         plantes.add((Plante) usineDuLac.creerPlante()); //ajout de l'enfant dans la liste de plantes
     }
 
-    protected void recyclageEnergie(int energieSupplementaire) {
-        this.energie += energieSupplementaire * this.efficaciteEnergie;
-
-    }
-
-    protected void retraitEnergie(double energieSupplementaire) {
-        this.energie -= this.energieEnfant - energieSupplementaire;
-    }
-
-    public double transfertEnergie(double voracite){
+    protected double transfertEnergie(double voracite){
         double energiePerdue = this.energie * voracite;
-        System.out.println("Energie plante avant: " + this.energie);
         this.energie -= energiePerdue;
-        System.out.println("Energie plante apres: " + this.energie);
         return energiePerdue;
     }
 }
