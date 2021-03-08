@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Iterator;
 
 public abstract class Usine {
     protected String nomEspece;
@@ -73,6 +74,17 @@ public abstract class Usine {
             this.energieEnfant = energieEnfant;
 
             traceInitialisation.replace("energieEnfant", true);
+        }
+    }
+
+    protected void attributNonInitialise(HashMap traceInitialisation) throws ConditionsInitialesInvalides {
+        Iterator it = traceInitialisation.entrySet().iterator();
+        while (it.hasNext()){
+            HashMap.Entry paire = (HashMap.Entry)it.next();
+            //System.out.println(paire.getKey() + " = " + paire.getValue());
+            if (paire.getValue().equals(false)){
+                throw new ConditionsInitialesInvalides("L'attribut \"" + paire.getKey() + "\" n'a pas été intialisé suite à un non-respect de sa contrainte ou son absence.");
+            }
         }
     }
 

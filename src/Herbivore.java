@@ -58,8 +58,12 @@ public class Herbivore extends Animal{
         this.viellir();
     }
 
-    private <Herbivore> void ajoutHerbivore(List<Herbivore> herbivores, UsineHerbivore usineDuLac) {
-        herbivores.add((Herbivore) usineDuLac.creerHerbivore()); //ajout de l'enfant dans la liste de plantes
+    private <Herbivore> void ajoutHerbivore(List<Herbivore> herbivores, UsineHerbivore usineDuLac){
+        try {
+            herbivores.add((Herbivore) usineDuLac.creerHerbivore()); //ajout de l'enfant dans la liste de plantes
+        } catch (ConditionsInitialesInvalides conditionsInitialesInvalides) {
+            conditionsInitialesInvalides.printStackTrace();
+        }
     }
 
     public double getVoraciteMin(){ return this.voraciteMin; }

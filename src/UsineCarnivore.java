@@ -13,12 +13,11 @@ public class UsineCarnivore extends Usine {
         traceInitialisation.put("aliments", false);
     }
 
-    protected Carnivore creerCarnivore(){
+    protected Carnivore creerCarnivore() throws ConditionsInitialesInvalides {
         Carnivore nouvelCarnivore = new Carnivore(this.nomEspece, this.energieEnfant, 0, this.besoinEnergie, this.efficaciteEnergie, this.resilience,
                 this.fertilite, this.ageFertilite, this.energieEnfant, this.tailleMaximum, this.debrouillardise, this.aliments);
         if ((traceInitialisation.containsValue(false))){
-            System.out.println(traceInitialisation);
-            return null;
+            attributNonInitialise(traceInitialisation);
         }
         return nouvelCarnivore;
     }

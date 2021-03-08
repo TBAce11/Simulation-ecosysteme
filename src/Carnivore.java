@@ -54,7 +54,11 @@ public class Carnivore extends Animal {
 
     private <Carnivore> void ajoutCarnivore(List<Carnivore> carnivores, UsineCarnivore usineDuLac) {
         //Herbivore bebe = (Herbivore) usineDuLac.creerHerbivore();
-        carnivores.add((Carnivore) usineDuLac.creerCarnivore()); //ajout de l'enfant dans la liste de plantes
+        try {
+            carnivores.add((Carnivore) usineDuLac.creerCarnivore()); //ajout de l'enfant dans la liste de plantes
+        } catch (ConditionsInitialesInvalides conditionsInitialesInvalides) {
+            conditionsInitialesInvalides.printStackTrace();
+        }
         /*System.out.println("bebe" + bebe);*/
     }
 }

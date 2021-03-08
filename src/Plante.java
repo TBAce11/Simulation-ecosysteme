@@ -46,8 +46,12 @@ public class Plante extends Organisme {
         this.viellir();
     }
 
-    private <Plante> void ajoutPlante(List<Plante> plantes, UsinePlante usineDuLac) {
-        plantes.add((Plante) usineDuLac.creerPlante()); //ajout de l'enfant dans la liste de plantes
+    private <Plante> void ajoutPlante(List<Plante> plantes, UsinePlante usineDuLac){
+        try {
+            plantes.add((Plante) usineDuLac.creerPlante()); //ajout de l'enfant dans la liste de plantes
+        } catch (ConditionsInitialesInvalides conditionsInitialesInvalides) {
+            conditionsInitialesInvalides.printStackTrace();
+        }
     }
 
     protected double transfertEnergie(double voracite){

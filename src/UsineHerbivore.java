@@ -17,12 +17,11 @@ public class UsineHerbivore extends Usine{
         traceInitialisation.put("aliments", false);
     }
 
-    protected Herbivore creerHerbivore(){
+    protected Herbivore creerHerbivore() throws ConditionsInitialesInvalides {
         Herbivore nouvelHerbivore = new Herbivore(this.nomEspece, this.energieEnfant, 0, this.besoinEnergie, this.efficaciteEnergie, this.resilience,
                 this.fertilite, this.ageFertilite, this.energieEnfant, this.tailleMaximum, this.debrouillardise, this.voraciteMin, this.voraciteMax, this.aliments);
         if ((traceInitialisation.containsValue(false))){
-            System.out.println(traceInitialisation);
-            return null;
+            attributNonInitialise(traceInitialisation);
         }
         return nouvelHerbivore;
     }
