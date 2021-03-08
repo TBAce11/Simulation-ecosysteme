@@ -72,8 +72,7 @@ public abstract class Organisme {
         if (Math.random() <= chanceSurvie){
             this.energie -= (this.besoinEnergie - energieAbsorbee);
             this.viellir();
-
-            if (this.energie <= 0){
+            if (Math.round(this.energie) <= 0){
                 return false;
             }
             return true;
@@ -82,7 +81,7 @@ public abstract class Organisme {
         }
     }
 
-    protected abstract void confirmationReproduction(Usine usineDuLac, List<? extends Organisme> liste, int energieSupplementaire);
+    protected abstract void confirmationReproduction(List<? extends Organisme> liste, int energieSupplementaire);
 
     final protected void recyclageEnergie(int energieSupplementaire){ //-> voir si elle peut être implémentée dans Organisme
         this.energie += energieSupplementaire * this.efficaciteEnergie;

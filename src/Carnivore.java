@@ -10,8 +10,8 @@ public class Carnivore extends Animal {
         debrouillardise, aliments);
     }
 
-    protected void confirmationReproduction(Usine usine, List<? extends Organisme> carnivores, int energieSupplementaire) {
-        UsineCarnivore usineCarnivoreDuLac = (UsineCarnivore) usine;
+    protected void confirmationReproduction(List<? extends Organisme> carnivores, int energieSupplementaire) {
+        UsineCarnivore usineCarnivoreDuLac = new UsineCarnivore();
         if (this.age >= this.ageFertilite) { //plante assez mature pour concevoir un enfant
             usineCarnivoreDuLac.setNomEspece(this.nomEspece);
             usineCarnivoreDuLac.setBesoinEnergie(this.besoinEnergie);
@@ -24,38 +24,29 @@ public class Carnivore extends Animal {
             usineCarnivoreDuLac.setDebrouillardise(this.debrouillardise);
             usineCarnivoreDuLac.setAliments(this.aliments);
 
-            System.out.println("Carnivore mature: " + this.age + " ans");
             while (energieSupplementaire > 0) {
                 //reproduction retourne énergie supplémentaire tout en effectuant les opérations nécessaires
                 if (Math.random() <= this.fertilite) { //cas où l'enfant plante sera créé
                     if (energieSupplementaire >= (int) (this.energieEnfant)) {
                         ajoutCarnivore(carnivores, usineCarnivoreDuLac);
-                        System.out.println("1 enfant créé");
-                        System.out.println("Supp avant: " + energieSupplementaire);
                         energieSupplementaire -= (int) (this.energieEnfant);
-                        System.out.println("Supp après: " + energieSupplementaire);
 
                     } else if ((energieSupplementaire < (int) (this.energieEnfant)) &&
                             (this.energie >= (this.energieEnfant - energieSupplementaire))) {
                         ajoutCarnivore(carnivores, usineCarnivoreDuLac);
-                        System.out.println("1 enfant créé");
                         retraitEnergie(energieSupplementaire);
-                        System.out.println("Supp avant: " + energieSupplementaire);
                         energieSupplementaire = 0;
 
                     } else { //l'énergie de l'adulte est insuffisante pour subvenir aux besoins de l'enfant même avec
                         //l'aide de l'énergie supplémentaire
-                        System.out.println("Pas assez d'énergie pour concevoir un nouvel enfant!");
                         this.recyclageEnergie(energieSupplementaire);
                         energieSupplementaire = 0;
                     }
                 } else { //tentative de reproduction échouée
-                    System.out.println("Reproduction échouée -> supp: " + energieSupplementaire);
                     energieSupplementaire--;
                 }
             }
         } else {
-            System.out.println("Carnivore immature.");
             this.recyclageEnergie(energieSupplementaire);
         }
         this.viellir();

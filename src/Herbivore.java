@@ -6,7 +6,6 @@ public class Herbivore extends Animal{
     private double voraciteMin;
     private double voraciteMax;
 
-
     public Herbivore(String nomEspece, double energie, int age, double besoinEnergie, double efficaciteEnergie, double
             resilience, double fertilite, int ageFertilite, double energieEnfant, int tailleMaximum, double debrouillardise, double voraciteMin, double voraciteMax, Set <String> aliments) {
         super(nomEspece, energie, age, besoinEnergie, efficaciteEnergie, resilience, fertilite, ageFertilite, energieEnfant, tailleMaximum, debrouillardise, aliments);
@@ -15,8 +14,8 @@ public class Herbivore extends Animal{
     }
 
 
-    protected void confirmationReproduction(Usine usine, List<? extends Organisme> herbivores, int energieSupplementaire) {
-        UsineHerbivore usineHerbivoreDuLac = (UsineHerbivore) usine;
+    protected void confirmationReproduction(List<? extends Organisme> herbivores, int energieSupplementaire) {
+        UsineHerbivore usineHerbivoreDuLac = new UsineHerbivore();
         if (this.age >= this.ageFertilite) { //plante assez mature pour concevoir un enfant
             usineHerbivoreDuLac.setNomEspece(this.nomEspece);
             usineHerbivoreDuLac.setBesoinEnergie(this.besoinEnergie);
@@ -62,4 +61,9 @@ public class Herbivore extends Animal{
     private <Herbivore> void ajoutHerbivore(List<Herbivore> herbivores, UsineHerbivore usineDuLac) {
         herbivores.add((Herbivore) usineDuLac.creerHerbivore()); //ajout de l'enfant dans la liste de plantes
     }
+
+    public double getVoraciteMin(){ return this.voraciteMin; }
+
+    public double getVoraciteMax() { return this.voraciteMax; }
+
 }

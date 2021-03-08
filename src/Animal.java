@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public abstract class Animal extends Organisme{
@@ -25,5 +26,10 @@ public abstract class Animal extends Organisme{
         return this.tailleMaximum;
     }
 
+    protected void miseAJourTaille(){
+        if (this.tailleMaximum < this.energieEnfant * 10){
+            this.tailleMaximum = (int) this.energieEnfant * 10;
+        }
+    }
 
 }

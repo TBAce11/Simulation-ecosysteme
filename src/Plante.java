@@ -7,8 +7,9 @@ public class Plante extends Organisme {
         super(nomEspece, energie, age, besoinEnergie, efficaciteEnergie, resilience, fertilite, ageFertilite, energieEnfant);
     }
 
-    protected void confirmationReproduction(Usine usine, List<? extends Organisme> plantes, int energieSupplementaire) {
-        UsinePlante usinePlanteDuLac = (UsinePlante) usine;
+    protected void confirmationReproduction(List<? extends Organisme> plantes, int energieSupplementaire) {
+        UsinePlante usinePlanteDuLac = new UsinePlante();
+        //UsinePlante usinePlanteDuLac = new UsinePlante();
         if (this.age >= this.ageFertilite) { //plante assez mature pour concevoir un enfant
             usinePlanteDuLac.setNomEspece(this.nomEspece);
             usinePlanteDuLac.setBesoinEnergie(this.besoinEnergie);

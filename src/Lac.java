@@ -9,15 +9,15 @@ public final class Lac {
     private final List<Plante> plantes;
     private final List<Herbivore> herbivores;
     private final List<Carnivore> carnivores;
-    private final UsinePlante usinePlanteDuLac = new UsinePlante();
-    private final UsineHerbivore usineHerbivoreDuLac = new UsineHerbivore();
-    private final  UsineCarnivore usineCarnivoreDuLac = new UsineCarnivore();
+    private final List<Animal> animaux = new ArrayList<>();
 
     public Lac(int energieSolaire, List<Plante> plantes, List<Herbivore> herbivores, List<Carnivore> carnivores) {
         this.energieSolaire = energieSolaire;
         this.plantes = plantes;
         this.herbivores = herbivores;
         this.carnivores = carnivores;
+        this.animaux.addAll(herbivores);
+        this.animaux.addAll(carnivores);
     }
 
     /**
@@ -36,7 +36,8 @@ public final class Lac {
         //Plantes
         if (plantes.size() > 0) {
             for (int i = 0; i < plantes.size(); i++) {
-                energieAbsorbeePlante = energieAbsorbee(energieDesPlantes, energieSolaire, plantes.get(i).getEnergie());
+                energieAbsorbeePlante = energieAbsorbee(energieDesPlantes, energieSolaire, plantes.get(i).getEnergie(), i);
+
 
                 // Si energie manquante
                 if (plantes.get(i).getBesoinEnergie() > energieAbsorbeePlante) {
@@ -52,8 +53,12 @@ public final class Lac {
                 // Si energie supplementaire
                 else if (plantes.get(i).getBesoinEnergie() <= energieAbsorbeePlante) {
                     energieSupplementairePlante = energieSupplementairePlante(energieAbsorbeePlante, plantes.get(i).getEnergieEnfant(), plantes.get(i).getBesoinEnergie());
-                    plantes.get(i).confirmationReproduction(usinePlanteDuLac, plantes, energieSupplementairePlante);
+                    plantes.get(i).confirmationReproduction(plantes, energieSupplementairePlante);
                 }
+                if(analyseEnergie(plantes, i)){
+                    plantes.remove(i);
+                }
+                //System.out.println("Énergie de la plante " + i + ": " + plantes.get(i).getEnergie());
             }
         }
         //energieSupplementaire = 0;
@@ -68,7 +73,7 @@ public final class Lac {
 
                 if (répétitionAlimentation > 0) {
                     energieAbsorbeeHerbivore = 0;
-                    while (répétitionAlimentation > 0) {
+                    while (répétitionAlimentation > 0 && (plantes.size() > 0)) {
                         int index;
                         do {
                             index = (int) (Math.random() * (plantes.size() - 1));
@@ -78,6 +83,9 @@ public final class Lac {
                         double energiePerdue = plantes.get(index).transfertEnergie(voracite);
                         energieAbsorbeeHerbivore += energiePerdue;
 
+                        if(analyseEnergie(plantes, index)){
+                            plantes.remove(index);
+                        }
                         répétitionAlimentation--;
                     }
                 }
@@ -100,49 +108,43 @@ public final class Lac {
                 }
                 // Si energie supplementaire
                 else if (herbivores.get(i).getBesoinEnergie() <= energieAbsorbeeHerbivore) {
-                    herbivores.get(i).confirmationReproduction(usineHerbivoreDuLac, herbivores, energieSupplementaireHerbivore);
+                    herbivores.get(i).confirmationReproduction(herbivores, energieSupplementaireHerbivore);
                 }
 
                 if (herbivores.size() == 0) { //killswitch si tous les herbivores sont morts en pleine simulation
                     break;
                 }
+                herbivores.get(i).miseAJourTaille();
+
+                if(analyseEnergie(herbivores, i)){
+                    herbivores.remove(i);
+                }
+
             }
         }
 
         //Carnivores
         if (carnivores.size() > 0) {
-            System.out.println("Liste carnivores :" + carnivores);
             for (int i = 0; i < carnivores.size(); i++) {
-                System.out.println();
-                System.out.println("Espèce: " + carnivores.get(i).getNomEspece() + ", carnivore #" + (i + 1));
-                System.out.println("Age: " + carnivores.get(i).getAge());
-
                 répétitionAlimentation = 0;
                 while (Math.random() <= carnivores.get(i).getDebrouillardise()) {
                     répétitionAlimentation++;
                 }
 
-                System.out.println("Il va manger: " + répétitionAlimentation + " fois.");
-                System.out.println("Energie de base : " + carnivores.get(i).getEnergie());
-
                 if (répétitionAlimentation > 0) {
                     energieAbsorbeeCarnivore = 0;
-                    System.out.println("Taille de la liste d'herbivores avant: " + herbivores.size());
                     while (répétitionAlimentation > 0 && herbivores.size() > 0) {
                         int index;
 
                         do {
                             index = (int) (Math.random() * (herbivores.size() - 1));
-                        } while (!(carnivores.get(i).getAliments().contains(herbivores.get(index).getNomEspece())));
+                        } while (!(carnivores.get(i).getAliments().contains(herbivores.get(index).getNomEspece())) && carnivores.get(i).getTailleMaximum() < herbivores.get(index).getTailleMaximum());
 
                         energieAbsorbeeCarnivore += herbivores.get(index).getEnergie();
-                        System.out.println("Herbivore #" + index + " de l'espèce <<" + herbivores.get(index).getNomEspece() + ">> valant une énergie de " + herbivores.get(index).getEnergie() + " dévoré.");
                         herbivores.remove(index); //mort de l'herbivore dévoré
 
                         répétitionAlimentation--;
                     }
-                    System.out.println("Taille de la liste d'herbivores après: " + herbivores.size());
-                    System.out.println("Énergie absorbée: " + energieAbsorbeeCarnivore);
                 }
 
                 if (energieAbsorbeeCarnivore > 0 && energieAbsorbeeCarnivore > carnivores.get(i).getBesoinEnergie()) {
@@ -156,26 +158,24 @@ public final class Lac {
                     if (!(carnivores.get(i).survie(energieAbsorbeeCarnivore))) {
                         carnivores.remove(i);
                         i--;
-                        System.out.println("Carnivore mort");
 
                         if ((i == -1) || (i == carnivores.size() - 1)) { //évites de créer un OutOfBoundsException
                             continue;
                         }
-                    } else {
-                        System.out.println("Le carnivore a échappé à la mort.");
                     }
                 }
                 // Si energie supplementaire
                 else if (carnivores.get(i).getBesoinEnergie() <= energieAbsorbeeCarnivore) {
-                    System.out.println("Supp calculé (carni): " + energieSupplementaireCarnivore);
-                    carnivores.get(i).confirmationReproduction(usineCarnivoreDuLac, carnivores, energieSupplementaireCarnivore);
-                    System.out.println("Énergie totale: " + carnivores.get(i).getEnergie());
+                    carnivores.get(i).confirmationReproduction(carnivores, energieSupplementaireCarnivore);
                 }
                 if (carnivores.size() == 0) { //killswitch si tous les carnivores sont morts en pleine simulation
                     break;
                 }
+                carnivores.get(i).miseAJourTaille();
+                if(analyseEnergie(carnivores, i)){
+                    carnivores.remove(i);
+                }
             }
-            System.out.println();
         }
     }
 
@@ -187,8 +187,13 @@ public final class Lac {
         return energieTotale;
     }
 
-    public double energieAbsorbee(double energieTotale, double energieSoleil, double energiePlante){
-        return energieSoleil * energiePlante / energieTotale;
+    public double energieAbsorbee(double energieTotale, double energieSoleil, double energiePlante, int i){
+        if (plantes.size() > 1){
+            return energieSoleil * (energiePlante / energieTotale);
+
+        } else {
+            return energieSoleil;
+        }
     }
 
     public int energieSupplementairePlante(double energieAbsorbeePlante, double energieActuelle, double besoinEnergie){
@@ -238,5 +243,12 @@ public final class Lac {
     private double voraciteCalcul (Herbivore herbivore){
         double voracite = herbivore.getVoraciteMin() + (Math.random() * (herbivore.getVoraciteMax() - herbivore.getVoraciteMin()));
         return voracite;
+    }
+
+    private boolean analyseEnergie(List<? extends Organisme> organisme, int i){ //mort de l'organisme suite à la baisse d'énergie
+        if(Math.round(organisme.get(i).getEnergie()) <= 0){
+            return true;
+        }
+        return false;
     }
 }
