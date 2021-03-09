@@ -72,11 +72,14 @@ public abstract class Usine {
 
     protected void attributNonInitialise(HashMap traceInitialisation) throws ConditionsInitialesInvalides {
         Iterator it = traceInitialisation.entrySet().iterator();
-        while (it.hasNext()){
-            HashMap.Entry paire = (HashMap.Entry)it.next();
-            if (paire.getValue().equals(false)){
-                throw new ConditionsInitialesInvalides("L'attribut \"" + paire.getKey() + "\" n'a pas été intialisé suite à un non-respect de sa contrainte ou son absence.");
+        while (it.hasNext()) {
+            HashMap.Entry paire = (HashMap.Entry) it.next();
+            if (paire.getValue().equals(false)) {
+                throw new ConditionsInitialesInvalides("L'attribut \"" + paire.getKey()
+                        + "\" n'a pas été intialisé suite à un non-respect de sa contrainte ou son absence.");
             }
         }
     }
+
+    // public abstract void setAll(Organisme organisme);
 }

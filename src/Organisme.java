@@ -1,6 +1,10 @@
+/* Auteurs: Anita Abboud et Tarik Benakezouh
+Description du fichier: Classe parent Organisme qui s'étend aux classes enfants Animal et Plante. */
+
 import java.lang.reflect.Array;
 import java.util.List;
 
+// Initialisation des variables locales
 public abstract class Organisme {
     protected String nomEspece;
     protected double energie;
@@ -12,8 +16,9 @@ public abstract class Organisme {
     protected int ageFertilite;
     protected double energieEnfant;
 
-    public Organisme(String nomEspece, double energie, int age, double besoinEnergie, double efficaciteEnergie, double
-            resilience, double fertilite, int ageFertilite, double energieEnfant){
+    // Constructeur d'un organisme
+    public Organisme(String nomEspece, double energie, int age, double besoinEnergie, double efficaciteEnergie,
+            double resilience, double fertilite, int ageFertilite, double energieEnfant) {
         this.nomEspece = nomEspece;
         this.energie = energie;
         this.age = age;
@@ -61,18 +66,21 @@ public abstract class Organisme {
         return this.energieEnfant;
     }
 
-    final protected void viellir(){
+    // Méthode qui fait vieillir un organisme d'un an
+    final protected void viellir() {
         this.age++;
     }
 
-    protected boolean survie(double energieAbsorbee){
+    // Méthode qui détermine si un organisme survie (True) ou non (False) en
+    // retournant un booléen
+    protected boolean survie(double energieAbsorbee) {
         int uniteEnergieManquante = (int) (this.besoinEnergie - energieAbsorbee);
         double chanceSurvie = Math.pow(this.resilience, uniteEnergieManquante);
 
-        if (Math.random() <= chanceSurvie){
+        if (Math.random() <= chanceSurvie) {
             this.energie -= (this.besoinEnergie - energieAbsorbee);
             this.viellir();
-            if (Math.round(this.energie) <= 0){
+            if (Math.round(this.energie) <= 0) { // On impose qu'un organisme meurt si son énergie arrondi est égale à 0
                 return false;
             }
             return true;
@@ -81,13 +89,21 @@ public abstract class Organisme {
         }
     }
 
+    // Méthode qui dirige la reproduction d'un organisme à partir de son énergie
+    // supplémentaire et qui ajout son enfant
+    // à la liste d'organisme s'il est nécessaire
     protected abstract void confirmationReproduction(List<? extends Organisme> liste, int energieSupplementaire);
 
-    final protected void recyclageEnergie(int energieSupplementaire){ //-> voir si elle peut être implémentée dans Organisme
+    // Méthode qui recycle l'énergie supplémentaire d'un organisme à partir de son
+    // efficacité énergétique
+    final protected void recyclageEnergie(int energieSupplementaire) {
         this.energie += energieSupplementaire * this.efficaciteEnergie;
     }
 
-    final protected void retraitEnergie(double energieSupplementaire){
+    // Méthode qui retire l'énergie nécessaire d'un organisme pour subvenir au
+    // besoin énergétique de son enfant
+    // à l'aide de son énergie supplémentaire
+    final protected void retraitEnergie(double energieSupplementaire) {
         this.energie -= this.energieEnfant - energieSupplementaire;
     }
 }

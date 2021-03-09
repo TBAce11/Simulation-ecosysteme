@@ -6,7 +6,7 @@ public class UsineCarnivore extends Usine {
     private double debrouillardise;
     private Set<String> aliments = new HashSet<String>();
 
-    public UsineCarnivore(){
+    public UsineCarnivore() {
         super();
         traceInitialisation.put("tailleMaximum", false);
         traceInitialisation.put("debrouillardise", false);
@@ -14,16 +14,17 @@ public class UsineCarnivore extends Usine {
     }
 
     protected Carnivore creerCarnivore() throws ConditionsInitialesInvalides {
-        Carnivore nouvelCarnivore = new Carnivore(this.nomEspece, this.energieEnfant, 0, this.besoinEnergie, this.efficaciteEnergie, this.resilience,
-                this.fertilite, this.ageFertilite, this.energieEnfant, this.tailleMaximum, this.debrouillardise, this.aliments);
-        if ((traceInitialisation.containsValue(false))){
+        Carnivore nouvelCarnivore = new Carnivore(this.nomEspece, this.energieEnfant, 0, this.besoinEnergie,
+                this.efficaciteEnergie, this.resilience, this.fertilite, this.ageFertilite, this.energieEnfant,
+                this.tailleMaximum, this.debrouillardise, this.aliments);
+        if ((traceInitialisation.containsValue(false))) {
             attributNonInitialise(traceInitialisation);
         }
         return nouvelCarnivore;
     }
 
-    protected void setTailleMaximum(int tailleMaximum){
-        if (tailleMaximum > 0){
+    protected void setTailleMaximum(int tailleMaximum) {
+        if (tailleMaximum > 0) {
             this.tailleMaximum = tailleMaximum;
             traceInitialisation.replace("tailleMaximum", true);
         }
@@ -43,15 +44,29 @@ public class UsineCarnivore extends Usine {
         }
     }
 
-    protected void setAliments (Set<String> aliments){
+    protected void setAliments(Set<String> aliments) {
         this.aliments = aliments;
-        if (aliments.size() != 0){
+        if (aliments.size() != 0) {
             traceInitialisation.replace("aliments", true);
         }
     }
-    protected void evaluationPresenceTaille(){
-        if ((!(traceInitialisation.get("tailleMaximum"))) && (traceInitialisation.get("energieEnfant"))){
+
+    protected void evaluationPresenceTaille() {
+        if ((!(traceInitialisation.get("tailleMaximum"))) && (traceInitialisation.get("energieEnfant"))) {
             setTailleMaximum((int) this.energieEnfant * 10);
         }
+    }
+
+    public void setAll(Carnivore carnivore) {
+        setNomEspece(carnivore.getNomEspece());
+        setBesoinEnergie(carnivore.getBesoinEnergie());
+        setEfficaciteEnergie(carnivore.getEfficaciteEnergie());
+        setResilience(carnivore.getResilience());
+        setFertilite(carnivore.getFertilite());
+        setAgeFertilite(carnivore.getAgeFertilite());
+        setEnergieEnfant(carnivore.getEnergieEnfant());
+        setTailleMaximum(carnivore.getTailleMaximum());
+        setDebrouillardise(carnivore.getDebrouillardise());
+        setAliments(carnivore.getAliments());
     }
 }
