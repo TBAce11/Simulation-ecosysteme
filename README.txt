@@ -31,6 +31,21 @@ des variables locales nécessaire aux calculs de probabilité d'un scénario et 
 3. Créer une classe ou une interface nommée Organisme. Modifier nos deux classes pour hériter de la classe Organisme ou
 d'implanter l'interface Organisme selon ce que vous avez choisi. Expliquez votre choix dans le fichier README.txt.
 
+Nous avons opté pour la classe au lieu de l'interface puisque nous ne pouvons pas concevoir le fait que les êtres
+vivants générés dans Lac puissent se limiter à des méthodes abtraites se limitant à décrire leurs actions comme une
+sorte de guide d'utilisateur. Une plante et un herbivore sont tous des organismes héritant des mêmes attributs et
+méthodes et leurs différences sont implémentées dans leurs propres classes uniques, rendant une interface inutile vu
+l'absence d'un conflit d'héritage.
+
+4. Il y a aussi de la répétition entre les deux classes-usines. Expliquez aussi dans le README.txt comment l'éliminer
+et faites les changements proposés.
+
+5.Expliquez dans votre README.txt comment vous avez séparé les responsabilités entre Lac et Herbivore. Avez-vous changé
+de stratégie par rapport à la première partie?
+
+6. Avez-vous réutilisé du code? Si oui, expliquer comment et pourquoi c'est désirable dans votre README.txt. Si non,
+expliquez pourquoi c'est indésirable.
+
 
 
 

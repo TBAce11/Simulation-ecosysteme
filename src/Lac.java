@@ -26,12 +26,8 @@ public final class Lac {
     public void tick() {
         double energieDesPlantes = energieTotale(this.plantes);
         double energieAbsorbeePlante = 0;
-        double energieAbsorbeeHerbivore = 0;
-        double energieAbsorbeeCarnivore = 0;
         double energieAbsorbeeAnimal = 0;
         int energieSupplementairePlante;
-        int energieSupplementaireHerbivore;
-        int energieSupplementaireCarnivore;
         int energieSupplementaireAnimal;
         int répétitionAlimentation;
 
@@ -40,16 +36,12 @@ public final class Lac {
             for (int i = 0; i < plantes.size(); i++) {
                 energieAbsorbeePlante = energieAbsorbee(energieDesPlantes, energieSolaire, plantes.get(i).getEnergie());
 
-
                 // Si energie manquante
                 if (plantes.get(i).getBesoinEnergie() > energieAbsorbeePlante) {
                     if (!(plantes.get(i).survie(energieAbsorbeePlante))) {
                         plantes.remove(i);
                         i--;
-
-                        if ((i == -1) || (i == herbivores.size() - 1)) { //évites de créer un OutOfBoundsException
-                            continue;
-                        }
+                        continue;
                     }
                 }
                 // Si energie supplementaire
@@ -60,12 +52,10 @@ public final class Lac {
                 if (analyseEnergie(plantes, i)) {
                     plantes.remove(i);
                 }
-                //System.out.println("Énergie de la plante " + i + ": " + plantes.get(i).getEnergie());
             }
         }
-        //energieSupplementaire = 0;
 
-        //Herbivores
+        //Herbivores et carnivores
         if (animaux.size() > 0) {
             for (int i = 0; i < animaux.size(); i++) {
                 répétitionAlimentation = 0;
@@ -86,7 +76,7 @@ public final class Lac {
                             double energiePerdue = plantes.get(index).transfertEnergie(voracite);
                             energieAbsorbeeAnimal += energiePerdue;
 
-                            if (analyseEnergie(plantes, index)) {
+                            if (analyseEnergie(plantes, index) && plantes.size() > 0) {
                                 plantes.remove(index);
                             }
                             répétitionAlimentation--;
@@ -103,32 +93,31 @@ public final class Lac {
                             if (index < i){ //change l'ordre d'étude des animaux si l'animal actuel dévore un autre animal avant lui
                                 i--;
                             }
-
                             répétitionAlimentation--;
                         }
                     }
                 }
 
-                if (energieAbsorbeeAnimal > 0 && energieAbsorbeeAnimal > animaux.get(i).getBesoinEnergie()) {
-                    energieSupplementaireAnimal = (int) (energieAbsorbeeAnimal - animaux.get(i).getBesoinEnergie());
-                } else {
-                    energieSupplementaireAnimal = 0;
-                }
-
-                // Si energie manquante
-                if (animaux.get(i).getBesoinEnergie() > energieAbsorbeeAnimal) {
-                    if (!(animaux.get(i).survie(energieAbsorbeeAnimal))) {
-                        animaux.remove(i);
-                        i--;
-                        continue;
+                if (animaux.size() > 0) { //vérification qu'au moins un animal est toujours en vie
+                    if (energieAbsorbeeAnimal > 0 && energieAbsorbeeAnimal > animaux.get(i).getBesoinEnergie()) {
+                        energieSupplementaireAnimal = (int) (energieAbsorbeeAnimal - animaux.get(i).getBesoinEnergie());
+                    } else {
+                        energieSupplementaireAnimal = 0;
                     }
-                }
-                // Si energie supplementaire
-                else if (animaux.get(i).getBesoinEnergie() <= energieAbsorbeeAnimal) {
-                    animaux.get(i).confirmationReproduction(animaux, energieSupplementaireAnimal);
-                }
 
-                if (animaux.size() == 0) { //killswitch si tous les herbivores sont morts en pleine simulation
+                    // Si énergie manquante
+                    if (animaux.get(i).getBesoinEnergie() > energieAbsorbeeAnimal) {
+                        if (!(animaux.get(i).survie(energieAbsorbeeAnimal))) {
+                            animaux.remove(i);
+                            i--;
+                            continue;
+                        }
+                    }
+                    // Si energie supplémentaire
+                    else if (animaux.get(i).getBesoinEnergie() <= energieAbsorbeeAnimal) {
+                        animaux.get(i).confirmationReproduction(animaux, energieSupplementaireAnimal);
+                    }
+                } else { //killswitch si tous les herbivores sont morts à la fin de la simulation
                     break;
                 }
 
@@ -209,7 +198,6 @@ public final class Lac {
     public double energieAbsorbee(double energieTotale, double energieSoleil, double energiePlante) {
         if (plantes.size() > 1) {
             return energieSoleil * (energiePlante / energieTotale);
-
         } else {
             return energieSoleil;
         }
