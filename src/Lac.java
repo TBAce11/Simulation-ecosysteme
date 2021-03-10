@@ -33,7 +33,7 @@ public final class Lac {
         double energieAbsorbeeAnimal = 0; // Énergie absorbée par l'herbivore ou carnivore étudié
         int energieSupplementairePlante; // Énergie supplémentaire de la plante étudiée
         int energieSupplementaireAnimal; // Énergie supplémentaire de l'herbivore ou carnivore étudié
-        int répétitionAlimentation; // Indicatif du nombre de fois qu'un herbivore ou carnivore peut manger
+        int repetitionAlimentation; // Indicatif du nombre de fois qu'un herbivore ou carnivore peut manger
 
         // Cycle de vie des plantes
         if (plantes.size() > 0) { // Étude des plantes permise seulement si au moins une d'entre elles est vivante
@@ -65,18 +65,18 @@ public final class Lac {
         // Cycle de vie des herbivores et carnivores
         if (animaux.size() > 0) { // Étude des animaux permise seulement si au moins un d'entre eux est encore vivant
             for (int i = 0; i < animaux.size(); i++) {
-                répétitionAlimentation = 0;
+                repetitionAlimentation = 0;
                 while (Math.random() <= animaux.get(i).getDebrouillardise()) {
                     // Calcul du nombre de fois que l'animal mangera incrémenté de 1 jusqu'à ce que le nombre aléatoire
                     // dépasse la débrouillardise de l'animal actuel
-                    répétitionAlimentation++;
+                    repetitionAlimentation++;
                 }
 
-                if (répétitionAlimentation > 0) { // Confirmation que l'animal puisse manger
+                if (repetitionAlimentation > 0) { // Confirmation que l'animal puisse manger
                     energieAbsorbeeAnimal = 0;
                     if (animaux.get(i) instanceof Herbivore) { // Cas où l'animal est un herbivore
-                        // Alimentation jusqu'à ce que le nombre de répétitions soit 0 tant qu'une plante soit vivante
-                        while (répétitionAlimentation > 0 && (plantes.size() > 0)) {
+                        // Alimentation jusqu'à ce que le nombre de repetitions soit 0 tant qu'une plante soit vivante
+                        while (repetitionAlimentation > 0 && (plantes.size() > 0)) {
                             int index;
                             do {
                                 index = (int) (Math.random() * (plantes.size() - 1));
@@ -95,12 +95,12 @@ public final class Lac {
                             if (analyseEnergie(plantes, index) && plantes.size() > 0) {
                                 plantes.remove(index);
                             }
-                            répétitionAlimentation--;
+                            repetitionAlimentation--;
                         }
                     } else if (animaux.get(i) instanceof Carnivore) { // Cas où l'animal est un carnivore
                         // Alimentation jusqu'à ce que le nombre de répétitions soit 0 tant qu'un autre animal que celui
                         // étudié soit vivant
-                        while (répétitionAlimentation > 0 && animaux.size() > 1) {
+                        while (repetitionAlimentation > 0 && animaux.size() > 1) {
                             int index;
                             do {
                                 index = (int) (Math.random() * (animaux.size() - 1));
@@ -116,7 +116,7 @@ public final class Lac {
                             if (index < i){
                                 i--;
                             }
-                            répétitionAlimentation--;
+                            repetitionAlimentation--;
                         }
                     }
                 }
