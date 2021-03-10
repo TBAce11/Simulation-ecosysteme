@@ -21,9 +21,8 @@ public class Carnivore extends Animal {
             usineCarnivoreDuLac.setAll(this); // Mise à jour de l'usine
 
             /*
-             * La reproduction retourne l'énergie supplémentaire tout en effectuant les
-             * opérations nécessaires sur le carnivore jusqu'à tant que l'énergie
-             * supplémentaire est nulle
+             * La reproduction retourne l'énergie supplémentaire tout en effectuant les opérations nécessaires sur le
+             * carnivore jusqu'à tant que l'énergie supplémentaire est nulle
              */
             while (energieSupplementaire > 0) {
                 if (Math.random() <= this.fertilite) { // Tentative de reproduction accomplie
@@ -53,7 +52,7 @@ public class Carnivore extends Animal {
                     energieSupplementaire--;
                 }
             }
-        } else { // Le carnivore n'a pas encore atteint l'age de maturité pour se reproduire
+        } else { // Le carnivore n'a pas encore atteint l'âge de maturité pour se reproduire
             this.recyclageEnergie(energieSupplementaire);
         }
         this.viellir();
@@ -61,12 +60,10 @@ public class Carnivore extends Animal {
 
     // Méthode qui ajoute un carnivore à la liste de carnivores mise en argument
     private <Carnivore> void ajoutCarnivore(List<Carnivore> carnivores, UsineCarnivore usineDuLac) {
-        // Herbivore bebe = (Herbivore) usineDuLac.creerHerbivore();
         try {
             carnivores.add((Carnivore) usineDuLac.creerCarnivore());
         } catch (ConditionsInitialesInvalides conditionsInitialesInvalides) {
             conditionsInitialesInvalides.printStackTrace();
         }
-        /* System.out.println("bebe" + bebe); */
     }
 }

@@ -21,7 +21,7 @@ pourquoi. Quels changements avez-vous vû faire?
 
 De prime abord, les opérations liées aux instances de Plante ont été effectuées au sein de cette classe afin de
 faciliter la lecture et réduire drastiquement la quantité du code qui serait franchement douloureux à suivre en
-éxagérant l'utilisation de la liste "plantes" afin d'accéder aux valeurs de l'instance à la position i de l'Arraylist.
+exagérant l'utilisation de la liste "plantes" afin d'accéder aux valeurs de l'instance à la position i de l'Arraylist.
 La séparation du code a donc été effectuée dès que les opérations du simulateur faisaient appel aux attributs de
 l'instance de Plante manipulée, tri crucial lorsque ceux-ci subissait une modification sans paramètre donné puisque
 accomplir ceci au sein de Lac impliquerait l'utilisation illégale de setters. Les changements apportés aux codes
@@ -40,12 +40,32 @@ l'absence d'un conflit d'héritage.
 4. Il y a aussi de la répétition entre les deux classes-usines. Expliquez aussi dans le README.txt comment l'éliminer
 et faites les changements proposés.
 
+Nous avons créé une classe abstraite parent nommée Usine qui regroupe tous les attributs et les méthodes qui se
+répétaient dans les deux classes-usines pour ainsi éliminer ces répétitions. Par exemple, toutes les méthodes 'setters'
+et les attributs communs aux deux classes sont déplacés dans la classe parent. Nous avons aussi mis une méthode
+'attributNonInitialise' qui s'assure que tous les setters de l'usine ont été appelés, à l'aide de la trace
+d'initialisation, et qui sinon retourne une exception.
+
 5.Expliquez dans votre README.txt comment vous avez séparé les responsabilités entre Lac et Herbivore. Avez-vous changé
 de stratégie par rapport à la première partie?
+
+Dans cette section, nous devons prendre en compte le fait que les herbivores se nourissent de plantes et qu'il y a donc
+un transfert de données entre ses classes, notamment pour l'énergie. Donc, toutes les interactions entre les classes
+doivent se faire dans la classe Lac. De plus, pour passer à travers notre liste d'herbivores, il est beaucoup plus
+simple de l'itérer dans Lac et d'ensuite étudier chaque instance d'herbivore dans une méthode située dans la classe
+Herbivore. D'autre part, lorsqu'on veut modifier un herbivore spécifique pour, par exemple, changer son énergie après
+qu'il ait mangé une plante, on doit nécessairement déléguer cette responsabilité à la classe Herbivore, car nous
+ne possédons aucun setter d'énergie dans la classe d'Herbivore pour changer celle-ci à partir d'une autre classe.
+Nous n'avons pas changé de stratégie par rapport à la première partie.
 
 6. Avez-vous réutilisé du code? Si oui, expliquer comment et pourquoi c'est désirable dans votre README.txt. Si non,
 expliquez pourquoi c'est indésirable.
 
-
+En général, pour écrire la nouvelle section reliée aux carnivores dans ConditionsInitiales, nous avons copié le code
+de la méthode NextHerbivore pour attribuer des valeurs à nos variables lors de la lecture du fichier XML. Par contre,
+nous avons retiré les lignes faisant référence à la voracité minimum et maximum, car les carnivores ne possèdent pas ces
+attributs. Nous avons aussi copié la section qui crée la liste d'herbivores à partir d'une instance de UsineHerbivore
+pour créer la liste des carnivores au sein de ConditionsInitiales. Il est donc désirable de copier le code, car il est
+déjà clair et structuré pour les herbivores et répond à nos besoins pour coder la section des carnivores.
 
 

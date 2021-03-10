@@ -30,33 +30,31 @@ public class Herbivore extends Animal {
 
     // Méthode qui dirige la reproduction d'un herbivore
     protected void confirmationReproduction(List<? extends Organisme> herbivores, int energieSupplementaire) {
-        UsineHerbivore usineHerbivoreDuLac = new UsineHerbivore(); // Initialisation d'une usine de herbivores vierge
+        UsineHerbivore usineHerbivoreDuLac = new UsineHerbivore(); // Initialisation d'une usine d'herbivores vierge
         if (this.age >= this.ageFertilite) { // Si l'herbivore est assez mature pour concevoir un enfant
             usineHerbivoreDuLac.setAll(this); // Mise à jour de l'usine
 
             /*
-             * La reproduction retourne l'énergie supplémentaire tout en effectuant les
-             * opérations nécessaires sur l'herbivore jusqu'à tant que l'énergie
-             * supplémentaire est nulle
+             * La reproduction retourne l'énergie supplémentaire tout en effectuant les opérations nécessaires
+             * sur l'herbivore jusqu'à tant que l'énergie supplémentaire est nulle
              */
             while (energieSupplementaire > 0) {
                 if (Math.random() <= this.fertilite) { // Tentative de reproduction accomplie
-
                     // Cas où l'enfant de l'herbivore sera créé
                     if (energieSupplementaire >= (int) (this.energieEnfant)) {
                         ajoutHerbivore(herbivores, usineHerbivoreDuLac);
                         energieSupplementaire -= (int) (this.energieEnfant);
 
-                        // Cas où l'herbivore ne possède pas assez d'énergie supplémentaire pour les
-                        // transférer à son enfant
+                        // Cas où l'herbivore ne possède pas assez d'énergie supplémentaire pour les transférer
+                        // à son enfant
                     } else if ((energieSupplementaire < (int) (this.energieEnfant))
                             && (this.energie >= (this.energieEnfant - energieSupplementaire))) {
                         ajoutHerbivore(herbivores, usineHerbivoreDuLac);
                         retraitEnergie(energieSupplementaire);
                         energieSupplementaire = 0;
                         /*
-                         * Cas où l'énergie de l'adulte est insuffisante pour subvenir aux besoins de
-                         * l'enfant même avec l'aide de l'énergie supplémentaire
+                         * Cas où l'énergie de l'adulte est insuffisante pour subvenir aux besoins de l'enfant même
+                         * avec l'aide de l'énergie supplémentaire
                          */
                     } else {
                         this.recyclageEnergie(energieSupplementaire);
@@ -66,7 +64,7 @@ public class Herbivore extends Animal {
                     energieSupplementaire--;
                 }
             }
-        } else { // L'herbivore n'a pas encore atteint l'age de maturité pour se reproduire
+        } else { // L'herbivore n'a pas encore atteint l'âge de maturité pour se reproduire
             this.recyclageEnergie(energieSupplementaire);
         }
         this.viellir();

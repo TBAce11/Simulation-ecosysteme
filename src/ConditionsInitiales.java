@@ -1,3 +1,6 @@
+/* Auteurs: Anita Abboud et Tarik Benakezouh
+Description du fichier: Classe ConditionsInitiales qui execute la simulation et qui lit les fichiers XML. */
+
 import javax.xml.namespace.QName;
 import javax.xml.stream.*;
 import javax.xml.stream.events.*;

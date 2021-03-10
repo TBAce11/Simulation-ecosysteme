@@ -19,9 +19,8 @@ public class Plante extends Organisme {
         if (this.age >= this.ageFertilite) { // Si la plante est assez mature pour concevoir un enfant
             usinePlanteDuLac.setAll(this); // Mise à jour de l'usine
             /*
-             * La reproduction retourne l'énergie supplémentaire tout en effectuant les
-             * opérations nécessaires sur la plante jusqu'à tant que l'énergie
-             * supplémentaire est nulle
+             * La reproduction retourne l'énergie supplémentaire tout en effectuant les opérations nécessaires
+             * sur la plante jusqu'à tant que l'énergie supplémentaire est nulle
              */
             while (energieSupplementaire > 0) {
                 if (Math.random() <= this.fertilite) { // Tentative de reproduction accomplie
@@ -31,8 +30,8 @@ public class Plante extends Organisme {
                         ajoutPlante(plantes, usinePlanteDuLac);
                         energieSupplementaire -= (int) (this.energieEnfant);
 
-                        // Cas où la plante ne possède pas assez d'énergie supplémentaire pour les
-                        // transférer à son enfant
+                        // Cas où la plante ne possède pas assez d'énergie supplémentaire pour les transférer à son
+                        // enfant
                     } else if ((energieSupplementaire < (int) (this.energieEnfant))
                             && (this.energie >= (this.energieEnfant - energieSupplementaire))) {
                         ajoutPlante(plantes, usinePlanteDuLac);
@@ -56,7 +55,7 @@ public class Plante extends Organisme {
         this.viellir();
     }
 
-    // Méthode qui ajoute unne plante à la liste de plantes mise en argument
+    // Méthode qui ajoute une plante à la liste de plantes mise en argument
     private <Plante> void ajoutPlante(List<Plante> plantes, UsinePlante usineDuLac) {
         try {
             plantes.add((Plante) usineDuLac.creerPlante());

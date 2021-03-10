@@ -1,3 +1,6 @@
+/* Auteurs: Anita Abboud et Tarik Benakezouh
+Description du fichier: Classe parent Usine qui s'étend aux classes-usines enfants. */
+
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -9,8 +12,12 @@ public abstract class Usine {
     protected double fertilite;
     protected int ageFertilite;
     protected double energieEnfant;
-    HashMap<String, Boolean> traceInitialisation = new HashMap<String, Boolean>();
 
+    HashMap<String, Boolean> traceInitialisation = new HashMap<String, Boolean>(); /* Dictionnaire qui servira de trace pour s'assurer
+    que tous les setters de l'usine ont été appelés avant la création d'un organisme. */
+
+    // Constructeur d'une Usine qui servira de schéma pour ses trois sous-classes
+    // Création d'une trace spécifiant que les attributs n'ont pas été initialisés par défaut
     public Usine() {
         traceInitialisation.put("nomEspece", false);
         traceInitialisation.put("besoinEnergie", false);
@@ -70,6 +77,7 @@ public abstract class Usine {
         }
     }
 
+    // Méthode qui renvoit une exception lorsque un ou plusieurs attributs de l'usine n'ont pas été spécifiés
     protected void attributNonInitialise(HashMap traceInitialisation) throws ConditionsInitialesInvalides {
         Iterator it = traceInitialisation.entrySet().iterator();
         while (it.hasNext()) {
@@ -80,6 +88,4 @@ public abstract class Usine {
             }
         }
     }
-
-    // public abstract void setAll(Organisme organisme);
 }

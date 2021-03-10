@@ -1,3 +1,6 @@
+/* Auteurs: Anita Abboud et Tarik Benakezouh
+Description du fichier: Classe Simulation qui structure les simulations et qui spécifient le nombre de cycles désiré. */
+
 import javax.xml.stream.*;
 import java.util.Arrays;
 import java.util.Iterator;
